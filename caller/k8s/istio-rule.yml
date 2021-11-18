@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: caller-service-destination
+spec:
+  host: caller-service
+  trafficPolicy:
+    loadBalancer:
+      simple: RANDOM
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: caller-service-route
+spec:
+  hosts:
+    - "caller.caller-callme.com"
+  gateways:
+    - caller-callme-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+      - destination:
+          host: caller-service
+---

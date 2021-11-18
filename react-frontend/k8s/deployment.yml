@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: caller-callme-frontend-service
+  labels:
+    app: caller-callme-frontend-service
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    app: caller-callme-frontend-service
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caller-callme-frontend-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: caller-callme-frontend-service
+  template:
+    metadata:
+      name: caller-callme-frontend-service
+      labels:
+        app: caller-callme-frontend-service
+        version: v1
+    spec:
+      containers:
+        #- env:
+        #    - name: REACT_APP_POD_ID
+        #      valueFrom:
+        #        fieldRef:
+        #          fieldPath: status.podIP
+        #    - name: REACT_APP_TEST
+        #      value: "test"
+        - image: kerimaksak/caller-callme-frontend-service:2.0
+          imagePullPolicy: Always
+          name: caller-callme-frontend-service
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP

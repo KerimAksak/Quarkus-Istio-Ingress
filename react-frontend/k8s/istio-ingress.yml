@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: caller-callme-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - "caller.caller-callme.com"
+    port:
+      name: http2
+      number: 80
+      protocol: HTTP
+  - hosts:
+    - "frontend.caller-callme.com"
+    port:
+      name: http1
+      number: 80
+      protocol: HTTP
+    #- port:
+    #    number: 80
+    #    name: http
+    #    protocol: HTTP
+    #  hosts:
+    #    - '*'
+

@@ -57,10 +57,12 @@ Steps to deploy on minikube
 
 ### Frontend
 
-![caller-ping](https://raw.githubusercontent.com/KerimAksak/Quarkus-Istio-Ingress/master/img/caller-ping.png)
+![caller-ping](https://raw.githubusercontent.com/KerimAksak/Quarkus-Istio-Ingress/master/img/frontend-test.png)
 
 ### Backend - Caller Ping
 
-![ingress-info](https://raw.githubusercontent.com/KerimAksak/Quarkus-Istio-Ingress/master/img/callme-ping.png)
+![ingress-info](https://raw.githubusercontent.com/KerimAksak/Quarkus-Istio-Ingress/master/img/caller-ping.png)
 
 ### Backend - Callme ping with Caller
+
+![caller-ping](https://raw.githubusercontent.com/KerimAksak/Quarkus-Istio-Ingress/master/img/callme-ping.png)

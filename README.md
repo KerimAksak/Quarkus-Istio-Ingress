@@ -14,7 +14,7 @@
 
 Steps to deploy on minikube
 
-``` json
+``` console
 ➜  ~ cd caller/k8s
 ➜  ~ kubectl apply -f deployment.yml
 ➜  ~ kubectl apply -f istio-rule.yml
@@ -27,7 +27,7 @@ Steps to deploy on minikube
 
 Steps to deploy on minikube
 
-``` json
+``` console
 ➜  ~ cd react-frontend/k8s
 ➜  ~ kubectl apply -f deployment.yml
 ➜  ~ kubectl apply -f istio-rule.yml
@@ -42,7 +42,6 @@ Steps to deploy on minikube
 ![kubectl](https://raw.githubusercontent.com/KerimAksak/Quarkus-Istio-Ingress/master/img/kbctl.png)
 
 * kgp ➜ kubectl get pod
-* k get vs ➜ kubectl get virtualservice
 * k get vs ➜ kubectl get virtualservice
 * k get dr ➜ kubectl get destinationrule
 * kgs ➜ kubectl get service

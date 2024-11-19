@@ -35,6 +35,10 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-rest-client-jackson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-jsonb</artifactId>
     </dependency>
     <dependency>
@@ -47,17 +51,8 @@
       <version>2.14.1</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.14.1</version>
-    </dependency>
-    <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-minikube</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-arc</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>

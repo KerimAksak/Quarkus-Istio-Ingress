@@ -1,11 +1,22 @@
 package org.kerim;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Callme {
     public Long id;
     public String serviceName;
     public String callmePodId;
     public String time;
     public String uri;
+    public String callerPodId;
+
+    public String getCallerPodId() {
+        return callerPodId;
+    }
+
+    public void setCallerPodId(String callerPodId) {
+        this.callerPodId = callerPodId;
+    }
 
     public Long getId() {
         return id;

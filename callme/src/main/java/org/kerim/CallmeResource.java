@@ -14,7 +14,6 @@ import java.util.Random;
 
 import static javax.ws.rs.core.Response.Status.OK;
 import static javax.ws.rs.core.Response.Status.GATEWAY_TIMEOUT;
-import static javax.ws.rs.core.Response.Status.SERVICE_UNAVAILABLE;
 
 @Path("/callme")
 public class CallmeResource {
@@ -37,7 +36,7 @@ public class CallmeResource {
         Callme temp = new Callme();
         temp.setId(1L);
         temp.setServiceName("callme-service");
-        temp.setPodId(podId);
+        temp.setCallmePodId(podId);
         temp.setTime(new SimpleDateFormat("HH:mm:ss")
                 .format(new java.util.Date(System.currentTimeMillis())));
         temp.setUri("callme-service/callme/ping");
@@ -62,7 +61,7 @@ public class CallmeResource {
             Callme temp = new Callme();
             temp.setId(1L);
             temp.setServiceName("callme-service");
-            temp.setPodId(podId);
+            temp.setCallmePodId(podId);
             temp.setTime(new SimpleDateFormat("HH:mm:ss")
                     .format(new java.util.Date(System.currentTimeMillis())));
             temp.setUri("callme-service/callme/ping");
@@ -80,7 +79,7 @@ public class CallmeResource {
         Callme temp = new Callme();
         temp.setId(1L);
         temp.setServiceName("callme-service");
-        temp.setPodId(podId);
+        temp.setCallmePodId(podId);
         temp.setTime(new SimpleDateFormat("HH:mm:ss")
                 .format(new java.util.Date(System.currentTimeMillis())));
         temp.setUri("callme-service/callme/ping");

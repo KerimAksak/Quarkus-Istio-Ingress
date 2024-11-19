@@ -21,7 +21,7 @@ public class CallerResource {
     @RestClient
     CallmeProxy callmeProxy;
 
-    @ConfigProperty(name = "POD_ID", defaultValue = "NOT PULL ID!")
+    @ConfigProperty(name = "POD_ID", defaultValue = "NOT PULL ID! (CALLER)")
     String podId;
 
     @ConfigProperty(name = "quarkus.application.name")
@@ -48,24 +48,30 @@ public class CallerResource {
     @GET
     @Path("/ping-callme")
     @Produces(MediaType.APPLICATION_JSON)
-    public String pingCallme(){
+    public Callme pingCallme(){
         LOG.info("Ping callme: name={}", applicationName);
-        return callmeProxy.pingCallme();
+        Callme callmeResponse = callmeProxy.pingCallme();
+        callmeResponse.setCallerPodId(podId);
+        return callmeResponse;
     }
 
     @GET
     @Path("/ping-callme-random-error")
     @Produces(MediaType.APPLICATION_JSON)
-    public String pingWithRandomError(){
+    public Callme pingWithRandomError(){
         LOG.info("Ping with random error: name={}", applicationName);
-        return callmeProxy.pingWithRandomError();
+        Callme callmeResponse = callmeProxy.pingCallme();
+        callmeResponse.setCallerPodId(podId);
+        return callmeResponse;
     }
 
     @GET
     @Path("/ping-callme-delay")
     @Produces(MediaType.APPLICATION_JSON)
-    public String pingWithRandomDelay(){
+    public Callme pingWithRandomDelay(){
         LOG.info("Ping with random delay: name={}", applicationName);
-        return callmeProxy.pingWithRandomDelay();
+        Callme callmeResponse = callmeProxy.pingCallme();
+        callmeResponse.setCallerPodId(podId);
+        return callmeResponse;
     }
 }

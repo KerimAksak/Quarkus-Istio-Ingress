@@ -13,6 +13,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
+import static javax.ws.rs.core.Response.Status.GATEWAY_TIMEOUT;
 
 @Path("/caller")
 public class CallerResource {
@@ -60,7 +63,7 @@ public class CallerResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Callme pingWithRandomError(){
         LOG.info("Ping with random error: name={}", applicationName);
-        Callme callmeResponse = callmeProxy.pingCallme();
+        Callme callmeResponse = callmeProxy.pingWithRandomError();
         callmeResponse.setCallerPodId(podId);
         return callmeResponse;
     }
@@ -70,8 +73,25 @@ public class CallerResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Callme pingWithRandomDelay(){
         LOG.info("Ping with random delay: name={}", applicationName);
-        Callme callmeResponse = callmeProxy.pingCallme();
+        Callme callmeResponse = callmeProxy.pingWithRandomDelay();
         callmeResponse.setCallerPodId(podId);
         return callmeResponse;
+    }
+
+    @GET
+    @Path("/error")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response error(){
+        return Response.status(GATEWAY_TIMEOUT).build();
+    }
+
+    @GET
+    @Path("/unhealthy")
+    @Produces(MediaType.APPLICATION_JSON)
+    public UnhealthyResponse unhealthy(){
+        LOG.info("Ping with random delay: name={}", applicationName);
+        UnhealthyResponse unhealthyResponse = new UnhealthyResponse();
+        unhealthyResponse.status = "DOWN";
+        return unhealthyResponse;
     }
 }

@@ -45,6 +45,13 @@ public class CallmeResource {
     }
 
     @GET
+    @Path("/error")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response error(){
+        return Response.status(GATEWAY_TIMEOUT).build();
+    }
+
+    @GET
     @Path("/ping-with-random-error")
     @Produces(MediaType.APPLICATION_JSON)
     public Response pingWithRandomError(){
@@ -84,6 +91,16 @@ public class CallmeResource {
                 .format(new java.util.Date(System.currentTimeMillis())));
         temp.setUri("callme-service/callme/ping");
         return Response.ok(temp).build();
+    }
+
+    @GET
+    @Path("/unhealthy")
+    @Produces(MediaType.APPLICATION_JSON)
+    public UnhealthyResponse unhealthy(){
+        LOG.info("Ping with random delay: name={}", applicationName);
+        UnhealthyResponse unhealthyResponse = new UnhealthyResponse();
+        unhealthyResponse.status = "DOWN";
+        return unhealthyResponse;
     }
 
 }
